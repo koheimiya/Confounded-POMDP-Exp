@@ -3,7 +3,7 @@ import os
 import pickle
 import argparse
 import utils as U
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from Model.Q_Network_Class import Q_network
 from Env.CartPole import CartPoleEnv

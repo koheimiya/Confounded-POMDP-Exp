@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+import tensorflow_probability as tfp
 from abc import abstractmethod
 
 class Basic_Alg():
@@ -28,7 +29,7 @@ class Basic_Alg():
     def get_percentile(self, x):
         ret = []
         for i in range(10):
-            ret.append(tf.contrib.distributions.percentile(x, i * 10 + 5))
+            ret.append(tfp.stats.percentile(x, i * 10 + 5))
         return ret
 
     def get_all_vars(self):

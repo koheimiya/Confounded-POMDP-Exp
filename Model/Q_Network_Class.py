@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+import tf_slim as slim
 import numpy as np
 import time
 
@@ -30,10 +31,10 @@ class Q_network():
             x = self.obs_ph
             index = 0
             for h in self.hidden_layers:
-                x = tf.contrib.layers.fully_connected(x, h, activation_fn=tf.nn.relu)
+                x = slim.fully_connected(x, h, activation_fn=tf.nn.relu)
                 index += 1
 
-            self.q_value = tf.contrib.layers.fully_connected(x, self.act_dim, activation_fn=None)
+            self.q_value = slim.fully_connected(x, self.act_dim, activation_fn=None)
             
             # temperature
             self.tau_ph = tf.placeholder(dtype=tf.float32, shape=[])
@@ -61,10 +62,10 @@ class Q_network():
             x = obs_ph
             index = 0
             for h in self.hidden_layers:
-                x = tf.contrib.layers.fully_connected(x, h, activation_fn=tf.nn.relu)
+                x = slim.fully_connected(x, h, activation_fn=tf.nn.relu)
                 index += 1
 
-            q_value = tf.contrib.layers.fully_connected(x, self.act_dim, activation_fn=None)
+            q_value = slim.fully_connected(x, self.act_dim, activation_fn=None)
             
             # temperature
             logits = q_value / self.tau_ph
@@ -79,10 +80,10 @@ class Q_network():
             x = obs_ph
             index = 0
             for h in self.hidden_layers:
-                x = tf.contrib.layers.fully_connected(x, h, activation_fn=tf.nn.relu)
+                x = slim.fully_connected(x, h, activation_fn=tf.nn.relu)
                 index += 1
 
-            q_value = tf.contrib.layers.fully_connected(x, self.act_dim, activation_fn=None)
+            q_value = slim.fully_connected(x, self.act_dim, activation_fn=None)
             
             # temperature
             b_logits = q_value / b_tau
@@ -107,10 +108,10 @@ class Q_network():
             x = obs_ph
             index = 0
             for h in self.hidden_layers:
-                x = tf.contrib.layers.fully_connected(x, h, activation_fn=tf.nn.relu)
+                x = slim.fully_connected(x, h, activation_fn=tf.nn.relu)
                 index += 1
 
-            q_value = tf.contrib.layers.fully_connected(x, self.act_dim, activation_fn=None)
+            q_value = slim.fully_connected(x, self.act_dim, activation_fn=None)
             
             # temperature
             logits = q_value / self.tau_ph

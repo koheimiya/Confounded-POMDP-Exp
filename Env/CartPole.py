@@ -1,6 +1,6 @@
-import gym
-from gym import spaces
-from gym.utils import seeding
+import gymnasium as gym
+from gymnasium import spaces
+from gymnasium.utils import seeding
 import numpy as np
 import math
 from os import path
