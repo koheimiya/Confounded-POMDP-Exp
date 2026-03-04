@@ -1,4 +1,6 @@
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from Model.Basic_Alg_Class import Basic_Alg
 
 class PO_MQL_RKHS(Basic_Alg):

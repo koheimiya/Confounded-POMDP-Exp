@@ -265,5 +265,6 @@ if __name__ == '__main__':
                         args_copy.obs_noise = obs_noise
                         args_list.append(args_copy)
 
-    with Pool(processes=len(args_list), maxtasksperchild=1) as p:
+    print(len(args_list), 'experiments in total')
+    with Pool(processes=4, maxtasksperchild=1) as p:
         p.map(main, args_list, chunksize=1)
