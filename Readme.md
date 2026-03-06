@@ -161,9 +161,12 @@ python run_solve_dr_RKHS.py --POMDP --target-tau 3.0 4.0 5.0 6.0 --obs-noise 0.1
 python run_solve_dr_RKHS.py --POMDP --target-tau 3.0 4.0 5.0 6.0 --obs-noise 0.1 --gamma 0.95 --norm std_norm --seed 100 --dataset-seed 0 100 200 300 400 500 600 700 800 900 --iter 10000 --kernel-bw-tau 0.5 --kernel-bv-tau 0.2 --baseline --PO-type noise #(mask)
 
 # Plot results
-You need to specify the log directories for experiments of baseline methods and our PO methods after `--baseline-log-dir` and `--PO-log-dir`, respectively.
+# You need to specify the log directories for experiments of baseline methods and our PO methods after `--baseline-log-dir` and `--PO-log-dir`, respectively.
+# Example:
+#   baseline-log-dir:   ./log/ObsNoise{obs_noise}_Size{sample_size}/Est_DR_Baseline
+#   PO-log-dir:         ./log/ObsNoise{obs_noise}_Size{sample_size}/Est_DR
 ## Plot MSE
-python plot_CartPole.py --target-tau 3.0 4.0 5.0 6.0 --baseline-log-dir ... --PO-log-dir ...
+python plot_CartPole.py --target-tau 3.0 4.0 5.0 6.0 --baseline-log-dir log/ObsNoise0.1_Size200000/Est_DR_Baseline --PO-log-dir log/ObsNoise0.1_Size200000/Est_DR
 ## Plot Bias
-python plot_CartPole.py --target-tau 3.0 4.0 5.0 6.0 --plot-bias --baseline-log-dir ... --PO-log-dir ...
+python plot_CartPole.py --target-tau 3.0 4.0 5.0 6.0 --plot-bias --baseline-log-dir log/ObsNoise0.1_Size200000/Est_DR_Baseline --PO-log-dir log/ObsNoise0.1_Size200000/Est_DR
 ```
